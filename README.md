@@ -1,9 +1,7 @@
-# Welcome to your CDK TypeScript project
+# Web Identity Federation
+The original project from https://learn.cantrill.io
 
-You should explore the contents of this project. It demonstrates a CDK app with an instance of a stack (`WebIdentityLabStack`)
-which contains an Amazon SQS queue that is subscribed to an Amazon SNS topic.
-
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+This is just a rewrite of the Cloudformation using CDK 2.X.
 
 ## Useful commands
 
