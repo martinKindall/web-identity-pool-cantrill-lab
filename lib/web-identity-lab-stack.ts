@@ -36,6 +36,15 @@ export class WebIdentityLabStack extends Stack {
 
     appBucket.addToResourcePolicy(policyStatement);
 
+    const policyStatementPatchesBucket = new iam.PolicyStatement({
+      effect: iam.Effect.ALLOW,
+      actions: ["s3:ListBucket", "s3:GetObject"],
+      resources: [patchesBucket.bucketArn, patchesBucket.bucketArn + '/*'],
+    });
+
+    const managedPolicy = new iam.ManagedPolicy(this, 'managedPolicyPrivateBucket');
+    managedPolicy.addStatements(policyStatementPatchesBucket);
+
     new s3_deploy.BucketDeployment(this, 'AppBucketDeployment', {
       sources: [s3_deploy.Source.asset('assets/appbucket')],
       destinationBucket: appBucket
